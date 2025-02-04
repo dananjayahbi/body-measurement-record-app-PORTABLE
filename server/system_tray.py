@@ -2,6 +2,8 @@ import pystray
 from pystray import MenuItem as item
 from PIL import Image, ImageDraw
 import subprocess
+import os
+import time
 
 server_process = None
 
@@ -22,13 +24,21 @@ def start_server():
             creationflags=subprocess.CREATE_NO_WINDOW
         )
 
-# Function to stop the server
+# ✅ Function to forcefully stop all Node.js processes
 def stop_server(icon, item):
     global server_process
     if server_process:
-        server_process.terminate()
-        server_process = None
-        icon.stop()  # Exit system tray
+        print("🛑 Stopping server...")
+
+        # ✅ Force kill ALL Node.js processes
+        os.system("taskkill /F /IM node.exe")
+
+        time.sleep(1)  # ✅ Allow time for cleanup
+
+        server_process = None  # ✅ Reset process tracker
+
+    print("✅ Server stopped!")
+    icon.stop()  # ✅ Close system tray properly
 
 # Define tray menu
 menu = (item("Stop Server", stop_server),)

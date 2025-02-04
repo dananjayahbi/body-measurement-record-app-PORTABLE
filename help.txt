@@ -1,0 +1,6 @@
+01. In this repository, it dosen't contain the ".next", "nodejs", "node_modules" files.
+02. You can get the ".next" folder by building the dev app (Explore the dev repository).
+03. Download the nodeJS portable from the official website and extract it. Then create a folder called "nodejs" and copy them.
+04. Run the "npm install" command to install the necessary dependencies.
+05. Then run the "start_app.bat" file.
+06. Open http://localhost:3000 in your browser
